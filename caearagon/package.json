@@ -1,17 +1,14 @@
 {
-  "name": "wprig",
+  "name": "caearagon",
   "version": "2.0.1",
-  "description": "A progressive theme development rig for WordPress.",
-  "author": "The WP Rig Contributors",
+  "description": "CAEARAGON theme",
+  "author": "David Francos <me@davidfrancos.net>",
   "license": "GPL-3.0-or-later",
   "main": "index.php",
-  "homepage": "https://github.com/wprig/wprig#readme",
+  "homepage": "https://caearagon.org",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wprig/wprig.git"
-  },
-  "bugs": {
-    "url": "https://github.com/wprig/wprig/issues"
+    "url": "git+https://github.com/caearagon/caearagon.org.git"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",

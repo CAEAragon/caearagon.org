@@ -14,25 +14,25 @@ namespace WP_Rig\WP_Rig;
 ?>
 
 <footer id="colophon" class="site-footer">
-    <img src="wp-content/themes/caearagon/assets/images/footer.png" class="footer-image" />
-    <div class=footer-content>
+	<img src="wp-content/themes/caearagon/assets/images/footer.png" class="footer-image" />
+	<div class=footer-content>
 
-        <div class="footer-data">
-            <p> 20 de junio de 2022<br/> 9:30 a 18:00 h</p>
-            <p> Caja Rural de Aragón<br/> C/ Coso 29. 50004, Zaragoza</p>
-            <p> <a href="mailto:info@agile-spain.org">info@agile-spain.org </a></p>
-        </div>
-    
-        <div class="footer-links">
-            <div class="tickets">
-                <a href="">ENTRADAS</a><br/>
-            </div>
-            <div class=social>
-                <img src="wp-content/themes/caearagon/assets/images/twitter.png" class="footer-image" />
-                <img src="wp-content/themes/caearagon/assets/images/linkedin.png" class="footer-image" />
-            </div>
-        </div>
-    </div>
+		<div class="footer-data">
+			<p> 20 de junio de 2022<br/> 9:30 a 18:00 h</p>
+			<p> Caja Rural de Aragón<br/> C/ Coso 29. 50004, Zaragoza</p>
+			<p> <a href="mailto:info@agile-spain.org">info@agile-spain.org </a></p>
+		</div>
+	
+		<div class="footer-links">
+			<div class="tickets">
+				<a href="">ENTRADAS</a><br/>
+			</div>
+			<div class=social>
+				<img src="wp-content/themes/caearagon/assets/images/twitter.png" class="footer-image" />
+				<img src="wp-content/themes/caearagon/assets/images/linkedin.png" class="footer-image" />
+			</div>
+		</div>
+	</div>
 
 </footer>
 </div>

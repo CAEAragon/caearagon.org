@@ -25,96 +25,89 @@ use function dynamic_sidebar;
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/
  */
-class Component implements Component_Interface, Templating_Component_Interface
-{
-    public const PRIMARY_SIDEBAR_SLUG = 'sidebar-1';
+class Component implements Component_Interface, Templating_Component_Interface {
 
-    /**
-     * Gets the unique identifier for the theme component.
-     *
-     * @return string Component slug.
-     */
-    public function get_slug(): string
-    {
-        return 'sidebars';
-    }
+	public const PRIMARY_SIDEBAR_SLUG = 'sidebar-1';
 
-    /**
-     * Adds the action and filter hooks to integrate with WordPress.
-     */
-    public function initialize()
-    {
-        add_action('widgets_init', array( $this, 'action_register_sidebars' ));
-        add_filter('body_class', array( $this, 'filter_body_classes' ));
-    }
+	/**
+	 * Gets the unique identifier for the theme component.
+	 *
+	 * @return string Component slug.
+	 */
+	public function get_slug(): string {
+		return 'sidebars';
+	}
 
-    /**
-     * Gets template tags to expose as methods on the Template_Tags class instance, accessible through `wp_rig()`.
-     *
-     * @return array Associative array of $method_name => $callback_info pairs. Each $callback_info must either be
-     *               a callable or an array with key 'callable'. This approach is used to reserve the possibility of
-     *               adding support for further arguments in the future.
-     */
-    public function template_tags(): array
-    {
-        return array(
-            'is_primary_sidebar_active' => array( $this, 'is_primary_sidebar_active' ),
-            'display_primary_sidebar'   => array( $this, 'display_primary_sidebar' ),
-        );
-    }
+	/**
+	 * Adds the action and filter hooks to integrate with WordPress.
+	 */
+	public function initialize() {
+		add_action( 'widgets_init', array( $this, 'action_register_sidebars' ) );
+		add_filter( 'body_class', array( $this, 'filter_body_classes' ) );
+	}
 
-    /**
-     * Registers the sidebars.
-     */
-    public function action_register_sidebars()
-    {
-        register_sidebar(
-            array(
-                'name'          => esc_html__('Sidebar', 'wp-rig'),
-                'id'            => static::PRIMARY_SIDEBAR_SLUG,
-                'description'   => esc_html__('Add widgets here.', 'wp-rig'),
-                'before_widget' => '<section id="%1$s" class="widget %2$s">',
-                'after_widget'  => '</section>',
-                'before_title'  => '<h3 class="widget-title">',
-                'after_title'   => '</h3>',
-            )
-        );
-    }
+	/**
+	 * Gets template tags to expose as methods on the Template_Tags class instance, accessible through `wp_rig()`.
+	 *
+	 * @return array Associative array of $method_name => $callback_info pairs. Each $callback_info must either be
+	 *               a callable or an array with key 'callable'. This approach is used to reserve the possibility of
+	 *               adding support for further arguments in the future.
+	 */
+	public function template_tags(): array {
+		return array(
+			'is_primary_sidebar_active' => array( $this, 'is_primary_sidebar_active' ),
+			'display_primary_sidebar'   => array( $this, 'display_primary_sidebar' ),
+		);
+	}
 
-    /**
-     * Adds custom classes to indicate whether a sidebar is present to the array of body classes.
-     *
-     * @param array $classes Classes for the body element.
-     * @return array Filtered body classes.
-     */
-    public function filter_body_classes(array $classes): array
-    {
-        if ($this->is_primary_sidebar_active()) {
-            global $template;
+	/**
+	 * Registers the sidebars.
+	 */
+	public function action_register_sidebars() {
+		register_sidebar(
+			array(
+				'name'          => esc_html__( 'Sidebar', 'wp-rig' ),
+				'id'            => static::PRIMARY_SIDEBAR_SLUG,
+				'description'   => esc_html__( 'Add widgets here.', 'wp-rig' ),
+				'before_widget' => '<section id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</section>',
+				'before_title'  => '<h3 class="widget-title">',
+				'after_title'   => '</h3>',
+			)
+		);
+	}
 
-            if (! in_array(basename($template), array( 'front-page.php', '404.php', '500.php', 'offline.php' ))) {
-                $classes[] = 'has-sidebar';
-            }
-        }
+	/**
+	 * Adds custom classes to indicate whether a sidebar is present to the array of body classes.
+	 *
+	 * @param array $classes Classes for the body element.
+	 * @return array Filtered body classes.
+	 */
+	public function filter_body_classes( array $classes ): array {
+		if ( $this->is_primary_sidebar_active() ) {
+			global $template;
 
-        return $classes;
-    }
+			if ( ! in_array( basename( $template ), array( 'front-page.php', '404.php', '500.php', 'offline.php' ) ) ) {
+				$classes[] = 'has-sidebar';
+			}
+		}
 
-    /**
-     * Checks whether the primary sidebar is active.
-     *
-     * @return bool True if the primary sidebar is active, false otherwise.
-     */
-    public function is_primary_sidebar_active(): bool
-    {
-        return (bool) is_active_sidebar(static::PRIMARY_SIDEBAR_SLUG);
-    }
+		return $classes;
+	}
 
-    /**
-     * Displays the primary sidebar.
-     */
-    public function display_primary_sidebar()
-    {
-        dynamic_sidebar(static::PRIMARY_SIDEBAR_SLUG);
-    }
+	/**
+	 * Checks whether the primary sidebar is active.
+	 *
+	 * @return bool True if the primary sidebar is active, false otherwise.
+	 */
+	public function is_primary_sidebar_active(): bool {
+		return (bool) is_active_sidebar( static::PRIMARY_SIDEBAR_SLUG );
+	}
+
+	/**
+	 * Displays the primary sidebar.
+	 */
+	public function display_primary_sidebar() {
+		dynamic_sidebar( static::PRIMARY_SIDEBAR_SLUG );
+	}
 }

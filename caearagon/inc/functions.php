@@ -14,14 +14,13 @@ namespace WP_Rig\WP_Rig;
  *
  * @return Template_Tags Template tags instance exposing template tag methods.
  */
-function wp_rig(): Template_Tags
-{
-    static $theme = null;
+function wp_rig(): Template_Tags {
+	static $theme = null;
 
-    if (null === $theme) {
-        $theme = new Theme();
-        $theme->initialize();
-    }
+	if ( null === $theme ) {
+		$theme = new Theme();
+		$theme->initialize();
+	}
 
-    return $theme->template_tags();
+	return $theme->template_tags();
 }

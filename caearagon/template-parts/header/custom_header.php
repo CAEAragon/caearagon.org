@@ -7,8 +7,8 @@
 
 namespace WP_Rig\WP_Rig;
 
-if (! has_header_image()) {
-    return;
+if ( ! has_header_image() ) {
+	return;
 }
 
 ?>

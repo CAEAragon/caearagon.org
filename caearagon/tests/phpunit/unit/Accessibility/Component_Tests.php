@@ -17,193 +17,183 @@ use WP_Rig\WP_Rig\Accessibility\Component;
  *
  * @group hooks
  */
-class Component_Tests extends Unit_Test_Case
-{
-    /**
-     * The accessibility component instance.
-     *
-     * @var Component
-     */
-    private $component;
+class Component_Tests extends Unit_Test_Case {
 
-    /**
-     * Sets up the environment before each test.
-     */
-    protected function setUp()
-    {
-        parent::setUp();
+	/**
+	 * The accessibility component instance.
+	 *
+	 * @var Component
+	 */
+	private $component;
 
-        $this->component = new Component();
-    }
+	/**
+	 * Sets up the environment before each test.
+	 */
+	protected function setUp() {
+		parent::setUp();
 
-    /**
-     * Tests that the slug of the component is correct.
-     *
-     * @covers Component::get_slug()
-     */
-    public function test_get_slug()
-    {
-        $this->assertSame('accessibility', $this->component->get_slug());
-    }
+		$this->component = new Component();
+	}
 
-    /**
-     * Tests that the component adds hooks correctly.
-     *
-     * @covers Component::initialize()
-     */
-    public function test_initialize()
-    {
-        $this->component->initialize();
+	/**
+	 * Tests that the slug of the component is correct.
+	 *
+	 * @covers Component::get_slug()
+	 */
+	public function test_get_slug() {
+		$this->assertSame( 'accessibility', $this->component->get_slug() );
+	}
 
-        $this->assertNotEquals(false, has_action('wp_enqueue_scripts', array( $this->component, 'action_enqueue_navigation_script' )));
-        $this->assertNotEquals(false, has_action('wp_print_footer_scripts', array( $this->component, 'action_print_skip_link_focus_fix' )));
-        $this->assertNotEquals(false, has_filter('nav_menu_link_attributes', array( $this->component, 'filter_nav_menu_link_attributes_aria_current' )));
-        $this->assertNotEquals(false, has_filter('page_menu_link_attributes', array( $this->component, 'filter_nav_menu_link_attributes_aria_current' )));
-    }
+	/**
+	 * Tests that the component adds hooks correctly.
+	 *
+	 * @covers Component::initialize()
+	 */
+	public function test_initialize() {
+		$this->component->initialize();
 
-    /**
-     * Tests enqueueing the navigation script.
-     *
-     * @covers Component::action_enqueue_navigation_script()
-     */
-    public function test_action_enqueue_navigation_script()
-    {
-        $template_tags = $this->mockTemplateTags(array( 'is_amp', 'get_asset_version' ));
+		$this->assertNotEquals( false, has_action( 'wp_enqueue_scripts', array( $this->component, 'action_enqueue_navigation_script' ) ) );
+		$this->assertNotEquals( false, has_action( 'wp_print_footer_scripts', array( $this->component, 'action_print_skip_link_focus_fix' ) ) );
+		$this->assertNotEquals( false, has_filter( 'nav_menu_link_attributes', array( $this->component, 'filter_nav_menu_link_attributes_aria_current' ) ) );
+		$this->assertNotEquals( false, has_filter( 'page_menu_link_attributes', array( $this->component, 'filter_nav_menu_link_attributes_aria_current' ) ) );
+	}
 
-        $template_tags->expects($this->once())
-            ->method('is_amp')
-            ->will($this->returnValue(false));
+	/**
+	 * Tests enqueueing the navigation script.
+	 *
+	 * @covers Component::action_enqueue_navigation_script()
+	 */
+	public function test_action_enqueue_navigation_script() {
+		$template_tags = $this->mockTemplateTags( array( 'is_amp', 'get_asset_version' ) );
 
-        $template_tags->expects($this->once())
-            ->method('get_asset_version')
-            ->will($this->returnValue('2.0.1'));
+		$template_tags->expects( $this->once() )
+			->method( 'is_amp' )
+			->will( $this->returnValue( false ) );
 
-        Functions\when('get_theme_file_uri')->returnArg();
-        Functions\when('get_theme_file_path')->returnArg();
+		$template_tags->expects( $this->once() )
+			->method( 'get_asset_version' )
+			->will( $this->returnValue( '2.0.1' ) );
 
-        Functions\expect('wp_enqueue_script')
-            ->with('wp-rig-navigation', Mockery::any(), Mockery::any(), Mockery::any(), Mockery::any())
-            ->once();
+		Functions\when( 'get_theme_file_uri' )->returnArg();
+		Functions\when( 'get_theme_file_path' )->returnArg();
 
-        Functions\expect('wp_script_add_data')
-            ->with('wp-rig-navigation', 'async', true)
-            ->twice();
+		Functions\expect( 'wp_enqueue_script' )
+			->with( 'wp-rig-navigation', Mockery::any(), Mockery::any(), Mockery::any(), Mockery::any() )
+			->once();
 
-        Functions\expect('wp_localize_script')
-            ->with('wp-rig-navigation', Mockery::any(), Mockery::any())
-            ->once();
+		Functions\expect( 'wp_script_add_data' )
+			->with( 'wp-rig-navigation', 'async', true )
+			->twice();
 
-        $this->component->action_enqueue_navigation_script();
-    }
+		Functions\expect( 'wp_localize_script' )
+			->with( 'wp-rig-navigation', Mockery::any(), Mockery::any() )
+			->once();
 
-    /**
-     * Tests enqueueing the navigation script, with AMP active.
-     *
-     * @covers Component::action_enqueue_navigation_script()
-     */
-    public function test_action_enqueue_navigation_script_with_amp()
-    {
-        $template_tags = $this->mockTemplateTags(array( 'is_amp', 'get_asset_version' ));
+		$this->component->action_enqueue_navigation_script();
+	}
 
-        $template_tags->expects($this->once())
-            ->method('is_amp')
-            ->will($this->returnValue(true));
+	/**
+	 * Tests enqueueing the navigation script, with AMP active.
+	 *
+	 * @covers Component::action_enqueue_navigation_script()
+	 */
+	public function test_action_enqueue_navigation_script_with_amp() {
+		$template_tags = $this->mockTemplateTags( array( 'is_amp', 'get_asset_version' ) );
 
-        $template_tags->expects($this->never())
-            ->method('get_asset_version');
+		$template_tags->expects( $this->once() )
+			->method( 'is_amp' )
+			->will( $this->returnValue( true ) );
 
-        Functions\expect('wp_enqueue_script')
-            ->never();
+		$template_tags->expects( $this->never() )
+			->method( 'get_asset_version' );
 
-        $this->component->action_enqueue_navigation_script();
-    }
+		Functions\expect( 'wp_enqueue_script' )
+			->never();
 
-    /**
-     * Tests printing the skip-link-focus-fix script inline.
-     *
-     * @covers Component::action_print_skip_link_focus_fix()
-     */
-    public function test_action_print_skip_link_focus_fix()
-    {
-        $template_tags = $this->mockTemplateTags(array( 'is_amp' ));
+		$this->component->action_enqueue_navigation_script();
+	}
 
-        $template_tags->expects($this->once())
-            ->method('is_amp')
-            ->will($this->returnValue(false));
+	/**
+	 * Tests printing the skip-link-focus-fix script inline.
+	 *
+	 * @covers Component::action_print_skip_link_focus_fix()
+	 */
+	public function test_action_print_skip_link_focus_fix() {
+		$template_tags = $this->mockTemplateTags( array( 'is_amp' ) );
 
-        ob_start();
-        $this->component->action_print_skip_link_focus_fix();
-        $output = ob_get_clean();
+		$template_tags->expects( $this->once() )
+			->method( 'is_amp' )
+			->will( $this->returnValue( false ) );
 
-        $this->assertTrue(false !== strpos($output, '<script>'));
-    }
+		ob_start();
+		$this->component->action_print_skip_link_focus_fix();
+		$output = ob_get_clean();
 
-    /**
-     * Tests printing the skip-link-focus-fix script inline, with AMP active.
-     *
-     * @covers Component::action_print_skip_link_focus_fix()
-     */
-    public function test_action_print_skip_link_focus_fix_with_amp()
-    {
-        $template_tags = $this->mockTemplateTags(array( 'is_amp' ));
+		$this->assertTrue( false !== strpos( $output, '<script>' ) );
+	}
 
-        $template_tags->expects($this->once())
-            ->method('is_amp')
-            ->will($this->returnValue(true));
+	/**
+	 * Tests printing the skip-link-focus-fix script inline, with AMP active.
+	 *
+	 * @covers Component::action_print_skip_link_focus_fix()
+	 */
+	public function test_action_print_skip_link_focus_fix_with_amp() {
+		$template_tags = $this->mockTemplateTags( array( 'is_amp' ) );
 
-        ob_start();
-        $this->component->action_print_skip_link_focus_fix();
-        $output = ob_get_clean();
+		$template_tags->expects( $this->once() )
+			->method( 'is_amp' )
+			->will( $this->returnValue( true ) );
 
-        $this->assertEmpty($output);
-    }
+		ob_start();
+		$this->component->action_print_skip_link_focus_fix();
+		$output = ob_get_clean();
 
-    /**
-     * Tests that an aria-current attribute is not added unconditionally.
-     *
-     * @covers Component::filter_nav_menu_link_attributes_aria_current()
-     */
-    public function test_filter_nav_menu_link_attributes_aria_current()
-    {
-        $atts = array();
-        $item = $this->getMockBuilder('WP_Post')->getMock();
+		$this->assertEmpty( $output );
+	}
 
-        $atts = $this->component->filter_nav_menu_link_attributes_aria_current($atts, $item);
-        $this->assertEmpty($atts);
-    }
+	/**
+	 * Tests that an aria-current attribute is not added unconditionally.
+	 *
+	 * @covers Component::filter_nav_menu_link_attributes_aria_current()
+	 */
+	public function test_filter_nav_menu_link_attributes_aria_current() {
+		$atts = array();
+		$item = $this->getMockBuilder( 'WP_Post' )->getMock();
 
-    /**
-     * Tests that an aria-current attribute is added for the current menu item.
-     *
-     * @covers Component::filter_nav_menu_link_attributes_aria_current()
-     */
-    public function test_filter_nav_menu_link_attributes_aria_current_with_current_item()
-    {
-        $atts          = array();
-        $item          = $this->getMockBuilder('WP_Post')->getMock();
-        $item->current = true;
+		$atts = $this->component->filter_nav_menu_link_attributes_aria_current( $atts, $item );
+		$this->assertEmpty( $atts );
+	}
 
-        $atts = $this->component->filter_nav_menu_link_attributes_aria_current($atts, $item);
-        $this->assertArrayHasKey('aria-current', $atts);
-    }
+	/**
+	 * Tests that an aria-current attribute is added for the current menu item.
+	 *
+	 * @covers Component::filter_nav_menu_link_attributes_aria_current()
+	 */
+	public function test_filter_nav_menu_link_attributes_aria_current_with_current_item() {
+		$atts          = array();
+		$item          = $this->getMockBuilder( 'WP_Post' )->getMock();
+		$item->current = true;
 
-    /**
-     * Tests that an aria-current attribute is added for the current post.
-     *
-     * @covers Component::filter_nav_menu_link_attributes_aria_current()
-     */
-    public function test_filter_nav_menu_link_attributes_aria_current_with_current_post()
-    {
-        $atts     = array();
-        $item     = $this->getMockBuilder('WP_Post')->getMock();
-        $item->ID = 1;
+		$atts = $this->component->filter_nav_menu_link_attributes_aria_current( $atts, $item );
+		$this->assertArrayHasKey( 'aria-current', $atts );
+	}
 
-        $GLOBALS['post'] = $item; // phpcs:ignore WordPress.WP.GlobalVariablesOverride
+	/**
+	 * Tests that an aria-current attribute is added for the current post.
+	 *
+	 * @covers Component::filter_nav_menu_link_attributes_aria_current()
+	 */
+	public function test_filter_nav_menu_link_attributes_aria_current_with_current_post() {
+		$atts     = array();
+		$item     = $this->getMockBuilder( 'WP_Post' )->getMock();
+		$item->ID = 1;
 
-        $atts = $this->component->filter_nav_menu_link_attributes_aria_current($atts, $item);
+		$GLOBALS['post'] = $item; // phpcs:ignore WordPress.WP.GlobalVariablesOverride
 
-        unset($GLOBALS['post']);
+		$atts = $this->component->filter_nav_menu_link_attributes_aria_current( $atts, $item );
 
-        $this->assertArrayHasKey('aria-current', $atts);
-    }
+		unset( $GLOBALS['post'] );
+
+		$this->assertArrayHasKey( 'aria-current', $atts );
+	}
 }

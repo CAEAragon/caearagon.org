@@ -93,7 +93,7 @@ msgstr ""
 msgid "Collapse child menu"
 msgstr ""
 
-#: inc/Comments/Component.php:149
+#: inc/Comments/Component.php:145
 msgid "New comment(s)"
 msgstr ""
 
@@ -179,7 +179,7 @@ msgstr ""
 
 #. translators: %s: Post title.
 #. translators: %s: Name of current post. Only visible to screen readers
-#: inc/Excerpts/Component.php:44, template-parts/content/entry_content.php:18
+#: inc/Excerpts/Component.php:43, template-parts/content/entry_content.php:18
 msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr ""
 
@@ -192,7 +192,7 @@ msgid "main-navigation nav--toggle-sub nav--toggle-small icon-nav"
 msgstr ""
 
 #. translators: %s: JS handle
-#: inc/Scripts/Component.php:148
+#: inc/Scripts/Component.php:147
 msgid "Invalid theme JS handle: %s"
 msgstr ""
 

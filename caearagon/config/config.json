@@ -1,8 +1,8 @@
 {
   "theme": {
-    "slug": "wp-rig",
-    "name": "WP Rig",
-    "author": "The WP Rig Contributors",
+    "slug": "wprig-caearagon",
+    "name": "CAEARAGON",
+    "author": "The WP Rig Contributors. Custom theme by David Francos",
     "PHPNamespace": "WP_Rig\\WP_Rig"
   },
   "dev": {

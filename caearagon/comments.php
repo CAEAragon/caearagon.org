@@ -5,10 +5,12 @@
  * This is the template that displays the area of the page that contains both the current comments
  * and the comment form.
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package caearagon
+ * @package wp_rig
  */
+
+namespace WP_Rig\WP_Rig;
 
 /*
  * If the current post is protected by a password and
@@ -18,29 +20,31 @@
 if ( post_password_required() ) {
 	return;
 }
+
+wp_rig()->print_styles( 'wp-rig-comments' );
+
 ?>
-
 <div id="comments" class="comments-area">
-
 	<?php
 	// You can start editing here -- including this comment!
-	if ( have_comments() ) :
+	if ( have_comments() ) {
 		?>
 		<h2 class="comments-title">
 			<?php
-			$caearagon_comment_count = get_comments_number();
-			if ( '1' === $caearagon_comment_count ) {
+			$comment_count = get_comments_number();
+			if ( 1 === $comment_count ) {
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'caearagon' ),
-					'<span>' . get_the_title() . '</span>'
+					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'wp-rig' ),
+					'<span>' . get_the_title() . '</span>' // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				);
 			} else {
-				printf( // WPCS: XSS OK.
+				printf(
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $caearagon_comment_count, 'comments title', 'caearagon' ) ),
-					number_format_i18n( $caearagon_comment_count ),
-					'<span>' . get_the_title() . '</span>'
+					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $comment_count, 'comments title', 'wp-rig' ) ),
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					number_format_i18n( $comment_count ),
+					'<span>' . get_the_title() . '</span>' // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				);
 			}
 			?>
@@ -48,28 +52,16 @@ if ( post_password_required() ) {
 
 		<?php the_comments_navigation(); ?>
 
-		<ol class="comment-list">
-			<?php
-			wp_list_comments( array(
-				'style'      => 'ol',
-				'short_ping' => true,
-			) );
-			?>
-		</ol><!-- .comment-list -->
+		<?php wp_rig()->the_comments(); ?>
 
 		<?php
-		the_comments_navigation();
-
-		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() ) :
+		if ( ! comments_open() ) {
 			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'caearagon' ); ?></p>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'wp-rig' ); ?></p>
 			<?php
-		endif;
-
-	endif; // Check for have_comments().
+		}
+	}
 
 	comment_form();
 	?>
-
 </div><!-- #comments -->

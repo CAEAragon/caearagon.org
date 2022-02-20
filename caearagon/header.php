@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The header for our theme
  *
@@ -7,58 +6,39 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package caearagon
+ * @package wp_rig
  */
+
+namespace WP_Rig\WP_Rig;
 
 ?>
 <!doctype html>
-<html <?php language_attributes(); ?>>
-
+<html <?php language_attributes(); ?> class="no-js">
 <head>
-    <meta charset="<?php bloginfo('charset'); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="profile" href="https://gmpg.org/xfn/11">
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
 
-<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	<?php
+	if ( ! wp_rig()->is_amp() ) {
+		?>
+		<script>document.documentElement.classList.remove( 'no-js' );</script>
+		<?php
+	}
+	?>
 
-    <?php wp_head(); ?>
+	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-    <div id="page" class="site <?php if (is_front_page()) {  ?> main-background <? } ?>">
-        <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e('Skip to content', 'caearagon'); ?></a>
+<?php wp_body_open(); ?>
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'wp-rig' ); ?></a>
 
-        <header id="masthead" class="site-header">
-            <div class="site-branding">
-                <img src="<?php print(get_template_directory_uri()) ?>/images/logo.png">
-                <!-- <?php
-                        the_custom_logo();
-                        ?> <?php
-                            if (is_front_page() && is_home()) :
-                            ?> <h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
-            <?php
-                            else :
-            ?>
-                <p class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a></p>
-            <?php
-                            endif;
-                            $caearagon_description = get_bloginfo('description', 'display');
-                            if ($caearagon_description || is_customize_preview()) :
-            ?>
-                <p class="site-description"><?php echo $caearagon_description; /* WPCS: xss ok. */ ?></p>
-            <?php endif; ?>
-            -->
-            </div><!-- .site-branding -->
+	<header id="masthead" class="site-header">
+		<?php get_template_part( 'template-parts/header/custom_header' ); ?>
 
-            <nav id="site-navigation" class="main-navigation">
-                <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Primary Menu', 'caearagon'); ?></button>
-                <?php
-                wp_nav_menu(array(
-                    'theme_location' => 'menu-1',
-                    'menu_id'        => 'primary-menu',
-                ));
-                ?>
-            </nav><!-- #site-navigation -->
-        </header><!-- #masthead -->
+		<?php get_template_part( 'template-parts/header/branding' ); ?>
 
-        <div id="content" class="site-content">
+		<?php get_template_part( 'template-parts/header/navigation' ); ?>
+	</header><!-- #masthead -->

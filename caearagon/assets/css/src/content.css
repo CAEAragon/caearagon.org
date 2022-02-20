@@ -375,3 +375,16 @@
 .article_excerpt {
 	padding-left: 10px;
 }
+
+.articles_title::after,
+.speakers_title::after,
+.sponsors_title::after {
+	content: "";
+	border-bottom: 1px solid #e63323;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	margin-bottom: 70px;
+	width: 70px;
+}

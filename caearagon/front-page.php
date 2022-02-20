@@ -137,8 +137,8 @@ foreach ($posts as $post) { ?>
 </div>
 
 <script>
-	document.getElementById('unete-al-cambio').style = `margin-top: ${(window.innerHeight / 2) - 200}px`;
-	document.getElementById('separator').style = `height: ${(window.innerHeight / 2) - 218}px`;
+	document.getElementById('unete-al-cambio').style = `margin-top: ${(window.innerHeight / 2) - 220}px`;
+	document.getElementById('separator').style = `height: ${(window.innerHeight / 2) - 270}px`;
 
 </script>
 </div>

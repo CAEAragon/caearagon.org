@@ -358,17 +358,20 @@
 
 .article_image {
 	height: 220px;
+	background: #fff;
 	background-repeat: no-repeat;
-	background: white;
 }
 
-.article_readmore {
+.article_readmore > a,
+.article_readmore > a:hover {
+	text-decoration: none;
 	text-align: left;
 	color: #e63323ff;
 	font-size: 16px;
 	padding-left: 10px;
 }
 
-.article_date, .article_excerpt {
+.article_date,
+.article_excerpt {
 	padding-left: 10px;
 }

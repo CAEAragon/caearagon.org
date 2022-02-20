@@ -1,15 +1,6 @@
 <?php
 /**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package wp_rig
+ * Front page theme
  */
 
 namespace WP_Rig\WP_Rig;
@@ -20,8 +11,7 @@ wp_rig()->print_styles('wp-rig-content');
 
 ?>
 <a name="conferencia"></a>
-	<main id="primary" class="site-main">
-		<?php
+        <main id="primary" class="site-main"><?php
         if (have_posts()) {
             get_template_part('template-parts/content/page_header');
 
@@ -62,7 +52,7 @@ $posts = get_posts([
 foreach ($posts as $post) {
     if (has_post_thumbnail($post->ID)) {
         $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full'); ?>
-	<div class=speaker style="background-image: url('<?php echo $image[0]; ?>')">
+        <div class=speaker style="background-image: url('<?php echo $image[0]; ?>')">
             <span class="speaker_excerpt"><?php echo $post->excerpt; ?></span>
             <span class="speaker_name"><?php echo $post->post_title; ?></span>
         </div>
@@ -94,7 +84,7 @@ $posts = get_posts([
 foreach ($posts as $post) {
     if (has_post_thumbnail($post->ID)) {
         $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full'); ?>
-	<div class=sponsor style="background-image: url('<?php echo $image[0]; ?>')"></div>
+        <div class=sponsor style="background-image: url('<?php echo $image[0]; ?>')"></div>
         <?php
     }
 }
@@ -128,7 +118,8 @@ foreach ($posts as $post) { ?>
         <?php
     } ?>
     <?php echo "<h4 class=article_title>$post->post_title</h4><span class=article_date>$post->post_modified</span>";
-          echo "<p class=article_excerpt>$post->post_excerpt</p><p class=article_readmore>Leer +</p>" ?>
+          echo "<p class=article_excerpt>$post->post_excerpt</p>";
+          echo "<p class=article_readmore><a href='".get_permalink($post)."'>Leer +</a></p>" ?>
 </article>
     <?php
 }
@@ -137,9 +128,8 @@ foreach ($posts as $post) { ?>
 </div>
 
 <script>
-	document.getElementById('unete-al-cambio').style = `margin-top: ${(window.innerHeight / 2) - 220}px`;
-	document.getElementById('separator').style = `height: ${(window.innerHeight / 2) - 270}px`;
-
+    document.getElementById('unete-al-cambio').style = `margin-top: ${(window.innerHeight / 2) - 220}px`;
+    document.getElementById('separator').style = `height: ${(window.innerHeight / 2) - 270}px`;
 </script>
 </div>
 <?php

@@ -16,29 +16,28 @@ namespace WP_Rig\WP_Rig;
 
 get_header();
 
-wp_rig()->print_styles( 'wp-rig-content' );
+wp_rig()->print_styles('wp-rig-content');
 
 ?>
 <a name="conferencia"></a>
 	<main id="primary" class="site-main">
 		<?php
-		if ( have_posts() ) {
+        if (have_posts()) {
+            get_template_part('template-parts/content/page_header');
 
-			get_template_part( 'template-parts/content/page_header' );
+            while (have_posts()) {
+                the_post();
 
-			while ( have_posts() ) {
-				the_post();
+                get_template_part('template-parts/content/entry', get_post_type());
+            }
 
-				get_template_part( 'template-parts/content/entry', get_post_type() );
-			}
-
-			if ( ! is_singular() ) {
-				get_template_part( 'template-parts/content/pagination' );
-			}
-		} else {
-			get_template_part( 'template-parts/content/error' );
-		}
-		?>
+            if (! is_singular()) {
+                get_template_part('template-parts/content/pagination');
+            }
+        } else {
+            get_template_part('template-parts/content/error');
+        }
+        ?>
 <div class="with_margin">
 <div class="speakers_main">
 <a name="agenda"></a>
@@ -128,8 +127,8 @@ foreach ($posts as $post) { ?>
         <div class=article_image style="background-image: url('<?php echo $image[0]; ?>')"></div>
         <?php
     } ?>
-    <?php echo "<h4 class=article_title>$post->post_title</h4><span class=article_date>$post->modified_date</span>";
-          echo "<span class=article_excerpt>$post->post_excerpt</span>" ?>
+    <?php echo "<h4 class=article_title>$post->post_title</h4><span class=article_date>$post->post_modified</span>";
+          echo "<p class=article_excerpt>$post->post_excerpt</p><p class=article_readmore>Leer +</p>" ?>
 </article>
     <?php
 }

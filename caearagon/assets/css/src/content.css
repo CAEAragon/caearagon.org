@@ -336,19 +336,39 @@
 	width: 100%;
 }
 
+.articles {
+	text-align: left;
+}
+
 .article {
 	max-width: 30%;
 	font-family: Montserrat;
 	font-size: 16px;
+	background: #edf0f4ff;
+	text-align: left !important;
+	display: inline-block;
 }
 
 .article_title {
 	color: #000d4fff;
 	font-size: 18px;
+	padding-left: 10px;
 	text-transform: uppercase;
 }
 
 .article_image {
 	height: 220px;
 	background-repeat: no-repeat;
+	background: white;
+}
+
+.article_readmore {
+	text-align: left;
+	color: #e63323ff;
+	font-size: 16px;
+	padding-left: 10px;
+}
+
+.article_date, .article_excerpt {
+	padding-left: 10px;
 }

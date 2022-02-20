@@ -221,11 +221,11 @@ select {
 
 
 .footer-links,
-.footer-links > a,
-.footer-links > a:visited,
-.footer-links > a:hover,
+.footer-links a,
+.footer-links a:visited,
+.footer-links a:hover,
 .footer-data {
-	margin-left: 100px;
+	text-decoration: none;
 	color: #fff;
 	display: inline-block;
 }
@@ -990,4 +990,14 @@ h2 {
 	margin-right: 9%;
 	display: inline-block;
 	float: right;
+}
+
+.tickets {
+	padding: 20px;
+	font-size: 16pt;
+}
+
+.social {
+	display: block;
+	width: 200px;
 }

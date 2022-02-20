@@ -24,9 +24,13 @@ namespace WP_Rig\WP_Rig;
         </div>
     
         <div class="footer-links">
-            <a href="">ENTRADAS</a><br/>
-            <a href="">Linkedin</a>
-            <a href="">twitter</a>
+            <div class="tickets">
+                <a href="">ENTRADAS</a><br/>
+            </div>
+            <div class=social>
+                <img src="wp-content/themes/caearagon/assets/images/twitter.png" class="footer-image" />
+                <img src="wp-content/themes/caearagon/assets/images/linkedin.png" class="footer-image" />
+            </div>
         </div>
     </div>
 

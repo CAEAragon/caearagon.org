@@ -862,7 +862,7 @@ h1 {
 	text-align: center;
 }
 
-.speaker {
+.home .speaker {
 	width: 333px;
 	height: 411px;
 	margin-bottom: 30px;
@@ -889,12 +889,21 @@ h1 {
 	font-size: 40px;
 }
 
-.sponsor {
+.home .sponsor {
 	width: 300px;
 	height: 200px;
 	margin-bottom: 30px;
 	margin-left: 45px;
 	display: inline-block;
+	background-repeat: no-repeat;
+}
+
+.single article {
+	margin-left: 120px;
+}
+
+.single {
+	background: url(../images/background_single.jpg);
 	background-repeat: no-repeat;
 }
 

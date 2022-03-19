@@ -18,6 +18,7 @@ $articles = get_posts(
             'post_type' => 'post',
             'post_status' => 'publish',
             'numberposts' => -1,
+            'orderby' => 'menu_order'
     )
 );
 
@@ -27,6 +28,7 @@ $speakers_posts = get_posts(
             'post_type' => 'speaker',
             'post_status' => 'publish',
             'numberposts' => -1,
+            'orderby' => 'menu_order'
     )
 );
 
@@ -36,6 +38,7 @@ $sponsors_posts = get_posts(
             'post_type' => 'sponsor',
             'post_status' => 'publish',
             'numberposts' => -1,
+            'orderby' => 'menu_order'
     )
 );
 

@@ -116,9 +116,12 @@ function show_text(post){ document.getElementById(post).classList.add('showText'
                 <ul class=sponsors> 
                 <?php
                 foreach ($sponsors_posts as $post) {
+                    $custom_class = get_post_meta($post->ID, 'class', true);
                     if (has_post_thumbnail($post->ID)) {
                             $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full'); ?>
-                            <div class=sponsor style="background-image: url('<?php echo $image[0]; ?>')"></div>
+                            <div class="sponsor <?php echo $custom_class; ?>" 
+                                 style="background-image: url('<?php echo $image[0]; ?>')">
+                            </div>
                             <?php
                     }
                 }

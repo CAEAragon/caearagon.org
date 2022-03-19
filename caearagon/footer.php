@@ -20,7 +20,7 @@ namespace WP_Rig\WP_Rig;
         <div class="footer-data">
             <p> 7 de junio de 2022<br/> 9:30 a 18:00 h</p>
             <p> Caja Rural de Aragón<br/> C/ Coso 29. 50004, Zaragoza</p>
-            <p> <a href="mailto:info@agile-spain.org">info@agile-spain.org </a></p>
+            <p> <a href="mailto:congreso.aragon.agilidad@gmail.com">congreso.aragon.agilidad@gmail.com</a></p>
         </div>
     
         <div class="footer-links">
@@ -39,7 +39,6 @@ namespace WP_Rig\WP_Rig;
             </div>
         </div>
     </div>
-
 </footer>
 </div>
 

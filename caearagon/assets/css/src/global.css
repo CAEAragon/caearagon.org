@@ -368,6 +368,7 @@ select {
 		}
 		@media screen and (max-width:600px) {
 			& .primary-menu-container {
+				display: none;
 				position: absolute;
 				background: #000d4f;
 				width: 100vw;
@@ -383,6 +384,7 @@ select {
 					content: "\f158";
 				}
 				& .primary-menu-container {
+					display: block;
 					top: 180px;
 					opacity: 0.9;
 					transition: opacity .3s, top .3s ease-out;

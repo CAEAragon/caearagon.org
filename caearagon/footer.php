@@ -18,14 +18,14 @@ namespace WP_Rig\WP_Rig;
     <div class=footer-content>
 
         <div class="footer-data">
-            <p> 7 de junio de 2022<br/> 9:30 a 18:00 h</p>
-            <p> Caja Rural de Aragón<br/> C/ Coso 29. 50004, Zaragoza</p>
+            <p> 7 de junio de 2022<br/> 9:00 a 18:30 h</p>
+            <p> <a href="https://www.fundacionibercaja.es/nuestros-espacios/campus-ibercaja" target="_blank">Monasterio Cogullada. Campus Ibercaja</a><br/> Carretera de Cogullada, 127, Zaragoza</p>
             <p> <a href="mailto:congreso.aragon.agilidad@gmail.com">congreso.aragon.agilidad@gmail.com</a></p>
         </div>
     
         <div class="footer-links">
             <div class="tickets">
-                <a href="">ENTRADAS</a><br/>
+                <a href="https://www.fundacionibercaja.es/zaragoza/caea-i-conferencia-de-agilidad-en-la-empresa-aragonesa" target="_blank">ENTRADAS</a><br/>
             </div>
             <div class=social>
                 <a href="http://twitter.com/IAragon" target=_blank>

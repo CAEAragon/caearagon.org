@@ -312,6 +312,13 @@ select {
 		left: 5px;
 		display:none;
 
+		& rect {
+			fill: white;
+		}
+		& path {
+			fill: white;
+		}
+
 		@media screen and (max-width: 600px) {
 			display:block;
 		}
@@ -361,8 +368,9 @@ select {
 		}
 		@media screen and (max-width:600px) {
 			& .primary-menu-container {
+				display: none;
 				position: absolute;
-				background: white;
+				background: #000d4f;
 				width: 100vw;
 				top: 300px;
 				left: 0;
@@ -376,8 +384,9 @@ select {
 					content: "\f158";
 				}
 				& .primary-menu-container {
+					display: block;
 					top: 180px;
-					opacity: 1;
+					opacity: 0.9;
 					transition: opacity .3s, top .3s ease-out;
 				}
 			}
@@ -414,7 +423,7 @@ select {
 		position: absolute;
 		top: 100%;
 		flex-direction: column;
-		background: #fff;
+		background: #000d4f;
 		margin-left: 0;
 		box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 		z-index: 100;
@@ -890,12 +899,13 @@ h1 {
 }
 
 .home .sponsor {
-	width: 300px;
-	height: 200px;
-	margin-bottom: 30px;
-	margin-left: 45px;
-	display: inline-block;
+	width: 26rem;
+	height: 10rem;
+	margin-bottom: 1rem;
+	display: flex;
 	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
 }
 
 .single article {
@@ -915,9 +925,35 @@ h1 {
 	margin-bottom: 0;
 }
 
-.sponsors {
+.sponsors h2 {
+	display: inline-block;
+	font-size: 36px;
+	color: #000d4f;
+	border-top: #000d4f dotted;
+	border-bottom: #000d4f dotted;
+}
+
+/*
+.sponsors h2::before, .sponsors h2::after {
+	width: 2rem;
+	display: inline-block;	
+	border-color: black;
+	border-width: 3px;
+	border-bottom-style: dotted;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	margin-bottom: 0rem;
+	content: "";
+}
+*/
+
+ul.sponsors {
 	width: 100%;
 	min-height: 300px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 }
 
 .red-left {
@@ -1091,11 +1127,15 @@ h2 {
 	}
 
 	.home div.sponsor {
-		display: flexbox;		
+		display: flex;		
 		margin-left: 0;
 		margin-bottom: 3rem;
 		background-position: center;
-		width: auto;
+		max-width: 95%;
+	}
+
+	.home div.sponsor:last-child {
+		margin-bottom: 0;
 	}
 
 	.home ul.articles {

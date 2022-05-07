@@ -32,15 +32,28 @@ $speakers_posts = get_posts(
     )
 );
 
-$sponsors_post = get_post($SPONSORS_POST_ID);
-$sponsors_posts = get_posts(
-    array(
-            'post_type' => 'sponsor',
-            'post_status' => 'publish',
-            'numberposts' => -1,
-            'orderby' => 'menu_order'
-    )
+$sponsors_types = array (
+        'especial' => 'Especial',
+        'platino' => 'Platino',
+        'oro' => 'Oro',
+        'colaborador' => 'Colaboradores',
 );
+$sponsors_post = get_post($SPONSORS_POST_ID);
+$sponsors_posts = array();
+
+foreach ($sponsors_types as $sponsor_type => $sponsor_type_name) {
+        $sponsors_posts[$sponsor_type] = get_posts(
+                array(
+                        'post_type' => 'sponsor',
+                        'post_status' => 'publish',
+                        'numberposts' => -1,
+                        'meta_key' => 'Tipo',
+                        'meta_value' => $sponsor_type,
+                        'orderby' => 'menu_order'
+                )
+            );
+            
+}
 
 ?>
 <a name="conferencia"></a>
@@ -112,21 +125,30 @@ function show_text(post){ document.getElementById(post).classList.add('showText'
                 <a name="patrocinio"></a>
 
                 <h1 class="sponsors_title"><?php echo $sponsors_post->post_title; ?> </h1>
-
-                <ul class=sponsors> 
                 <?php
-                foreach ($sponsors_posts as $post) {
-                    $custom_class = get_post_meta($post->ID, 'class', true);
-                    if (has_post_thumbnail($post->ID)) {
-                            $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full'); ?>
-                            <div class="sponsor <?php echo $custom_class; ?>" 
-                                 style="background-image: url('<?php echo $image[0]; ?>')">
-                            </div>
-                            <?php
-                    }
+                foreach ($sponsors_types as $sponsor_type => $sponsor_type_name) { 
+                        if (count($sponsors_posts[$sponsor_type]) > 0) {  ?>
+
+                        <div class="sponsors sponsors-<?php echo $sponsor_type; ?>"> 
+                                <h2><?php echo $sponsor_type_name; ?></h2>
+                                <ul class="sponsors sponsors-<?php echo $sponsor_type; ?>"> 
+                                <?php
+                                foreach ($sponsors_posts[$sponsor_type] as $post) {
+                                        if (has_post_thumbnail($post->ID)) {
+                                                $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full'); ?>
+                                                <div class="sponsor sponsor-<?php echo $key; ?>" 
+                                                        style="background-image: url('<?php echo $image[0]; ?>')">
+                                                </div>
+                                                <?php
+                                        }
+                                }
+                                ?>
+                                </ul>
+                        </div>
+                <?php
+                        }
                 }
                 ?>
-                </ul>
         </div>
 
         <div class="articles_main">

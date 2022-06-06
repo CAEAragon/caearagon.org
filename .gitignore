@@ -1,3 +1,5 @@
 # exclude deploy assets
 wprig-caearagon
 wprig-caearagon.zip
+
+.DS_Store

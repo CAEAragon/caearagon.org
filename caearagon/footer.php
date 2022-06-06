@@ -29,12 +29,10 @@ namespace WP_Rig\WP_Rig;
             </div>
             <div class=social>
                 <a href="http://twitter.com/IAragon" target=_blank>
-                    <img src="<?php echo get_template_directory_uri();?>/assets/images/twitter.png" 
-                         class="footer-image" />
+                    <img src="<?php echo get_template_directory_uri();?>/assets/images/twitter.png" />
                 </a>
                 <a href="https://www.linkedin.com/in/conferencia-agilidad-empresa-aragonesa/" target=_blank>
-                    <img src="<?php echo get_template_directory_uri();?>/assets/images/linkedin.png" 
-                         class="footer-image" />
+                    <img src="<?php echo get_template_directory_uri();?>/assets/images/linkedin.png" />
                 </a>
             </div>
         </div>

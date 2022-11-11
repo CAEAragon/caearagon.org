@@ -119,8 +119,6 @@ function show_text(post){ document.getElementById(post).classList.add('showText'
                 </ul>
         </div>
 
-        <a href="/wp-content/uploads/2022/06/CAEA_Agenda_2022.pdf" target="_blank" class=speakers_button>VER AGENDA</a>
-
         <div class="sponsors_main">
                 <a name="patrocinio"></a>
 

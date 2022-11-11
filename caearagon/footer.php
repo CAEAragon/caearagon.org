@@ -18,15 +18,12 @@ namespace WP_Rig\WP_Rig;
     <div class=footer-content>
 
         <div class="footer-data">
-            <p> 7 de junio de 2022<br/> 9:00 a 18:30 h</p>
+            <p> 8 de junio de 2023<br/> 9:00 a 18:30 h</p>
             <p> <a href="https://www.fundacionibercaja.es/nuestros-espacios/campus-ibercaja" target="_blank">Monasterio Cogullada. Campus Ibercaja</a><br/> Carretera de Cogullada, 127, Zaragoza</p>
             <p> <a href="mailto:congreso.aragon.agilidad@gmail.com">congreso.aragon.agilidad@gmail.com</a></p>
         </div>
     
         <div class="footer-links">
-            <div class="tickets">
-                <a href="https://www.fundacionibercaja.es/zaragoza/caea-i-conferencia-de-agilidad-en-la-empresa-aragonesa" target="_blank">ENTRADAS</a><br/>
-            </div>
             <div class=social>
                 <a href="http://twitter.com/IAragon" target=_blank>
                     <img src="<?php echo get_template_directory_uri();?>/assets/images/twitter.png" />

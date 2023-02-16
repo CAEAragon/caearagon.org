@@ -22,14 +22,17 @@ namespace WP_Rig\WP_Rig;
             <p> <a href="https://www.fundacionibercaja.es/nuestros-espacios/campus-ibercaja" target="_blank">Monasterio Cogullada. Campus Ibercaja</a><br/> Carretera de Cogullada, 127, Zaragoza</p>
             <p> <a href="mailto:congreso.aragon.agilidad@gmail.com">congreso.aragon.agilidad@gmail.com</a></p>
         </div>
-    
+
         <div class="footer-links">
             <div class=social>
-                <a href="http://twitter.com/IAragon" target=_blank>
+                <a href="http://twitter.com/iagilidad" target=_blank>
                     <img src="<?php echo get_template_directory_uri();?>/assets/images/twitter.png" />
                 </a>
                 <a href="https://www.linkedin.com/in/conferencia-agilidad-empresa-aragonesa/" target=_blank>
                     <img src="<?php echo get_template_directory_uri();?>/assets/images/linkedin.png" />
+                </a>
+                <a href="https://www.youtube.com/channel/UCZkVhc0TGy_mgFhIkel7Khw" target=_blank>
+                    <img src="<?php echo get_template_directory_uri();?>/assets/images/youtube.png" />
                 </a>
             </div>
         </div>

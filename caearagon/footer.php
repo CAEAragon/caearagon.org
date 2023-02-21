@@ -32,7 +32,7 @@ namespace WP_Rig\WP_Rig;
                     <img src="<?php echo get_template_directory_uri();?>/assets/images/linkedin.png" />
                 </a>
                 <a href="https://www.youtube.com/channel/UCZkVhc0TGy_mgFhIkel7Khw" target=_blank>
-                    <img src="<?php echo get_template_directory_uri();?>/assets/images/youtube.png" />
+                    <img width="40px" src="<?php echo get_template_directory_uri();?>/assets/images/youtube.png" />
                 </a>
             </div>
         </div>

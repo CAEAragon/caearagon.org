@@ -123,6 +123,7 @@ function show_text(post){ document.getElementById(post).classList.add('showText'
                 <a name="patrocinio"></a>
 
                 <h1 class="sponsors_title"><?php echo $sponsors_post->post_title; ?> </h1>
+                <p class="sponsors_text"><?php echo $sponsors_post->post_content; ?> </p>
                 <?php
                 foreach ($sponsors_types as $sponsor_type => $sponsor_type_name) { 
                         if (count($sponsors_posts[$sponsor_type]) > 0) {  ?>

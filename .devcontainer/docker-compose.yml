@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   db:
-    image: mysql:5.7
+    image: mariadb:10.0.38
     volumes:
       - db_data:/var/lib/mysql
     restart: always
@@ -19,19 +19,27 @@ services:
       - "8000:80"
     restart: always
     volumes:
-      - ./caearagon:/var/www/html/wp-content/themes/caearagon
+      - ../caearagon:/var/www/html/wp-content/themes/wprig-caearagon
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
   dev:
+    depends_on:
+      - wordpress
     build: 
       context: .
-      dockerfile: .devcontainer/Dockerfile
+      dockerfile: Dockerfile
       # [Optional] You can use build args to set options. e.g. 'VARIANT' below affects the image in the Dockerfile
       args: 
         VARIANT: "7.4"
         NODE_VERSION: "14"
+    volumes:
+      # This is where VS Code should expect to find your project's source code and the value of "workspaceFolder" in .devcontainer/devcontainer.json
+      - ..:/workspace:cached
+
+      # Uncomment the next line to use Docker from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker-compose for details.
+      # - /var/run/docker.sock:/var/run/docker.sock 
 volumes:
-    db_data: {}
+  db_data: {}

@@ -8,9 +8,13 @@
   "dev": {
     "browserSync": {
       "live": true,
-      "proxyURL": "localhost:8000",
+      "proxyURL": "wordpress:80",
       "bypassPort": "8181",
-      "https": false
+      "https": false,
+      "cors": true,
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      }
     },
     "styles": {
       "stage": 3,

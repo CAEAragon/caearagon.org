@@ -378,7 +378,8 @@
 
 .articles_title::after,
 .speakers_title::after,
-.sponsors_title::after {
+.sponsors_title::after,
+.schedule_title::after {
 	content: "";
 	border-bottom: 1px solid #e63323;
 	display: block;

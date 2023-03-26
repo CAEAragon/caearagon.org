@@ -7,20 +7,24 @@
 	"service": "dev",
 	"workspaceFolder": "/workspace",
 	
-	// Set *default* container specific settings.json values on container create.
-	"settings": { 
-		"php.validate.executablePath": "/usr/local/bin/php"
+	"customizations": {
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": { 
+				"php.validate.executablePath": "/usr/local/bin/php"
+			},
+
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"xdebug.php-debug",
+				"bmewburn.vscode-intelephense-client",
+				"mrmlnc.vscode-apache"
+			]
+		}
 	},
 
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"xdebug.php-debug",
-		"bmewburn.vscode-intelephense-client",
-		"mrmlnc.vscode-apache"
-	],
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [8080],
+	"forwardPorts": [8081],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "sudo chmod a+x \"$(pwd)\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)\" /var/www/html"

@@ -759,6 +759,7 @@ h1 {
 
 .speakers_main,
 .sponsors_main,
+.schedule_main,
 .articles_main {
 	padding-left: 9%;
 	padding-bottom: 40px;
@@ -892,12 +893,34 @@ h1 {
 
 .speakers_title,
 .articles_title,
-.sponsors_title {
+.sponsors_title,
+.schedule_title {
 	text-transform: uppercase;
 	color: #000d4fff;
 	font-family: Montserrat;
 	font-size: 40px;
 }
+
+.schedule_content {
+	padding-bottom: 20px;
+}
+
+.schedule_main .wp-block-table.is-style-stripes{
+	border-bottom: none;
+}
+
+.schedule_main .schedule_content tbody tr:nth-child(odd) {
+    background-color: #edf0f4;
+}
+
+.schedule_main td:first-of-type {
+	text-align: center;
+}
+
+.schedule_main td:last-of-type {
+	text-align: left;
+}
+
 
 .home .sponsor {
 	width: 26rem;

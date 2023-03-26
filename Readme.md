@@ -1,13 +1,8 @@
-# CAEAragon.org template and content
+# CAEAragon.org WP template
 
-
-data/ contains every WP data export, in alphabetical order
 caearagon/ has the template, based on underscores. 
 
-Launch it with docker-compose::
-
-    docker-compose up
+Launch it with VSCode dev-containers
 
 
-And access wordpress at localhost:8080.
-Set it up and import the latest data/ file.
+

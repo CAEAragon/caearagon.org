@@ -1,5 +1,5 @@
-CAEAragon.org template and content
------------------------------------
+# CAEAragon.org template and content
+
 
 data/ contains every WP data export, in alphabetical order
 caearagon/ has the template, based on underscores. 

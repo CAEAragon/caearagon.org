@@ -1,17 +1,11 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.234.0/containers/php
 {
-	"name": "PHP",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"args": { 
-			// Update VARIANT to pick a PHP version: 8, 8.1, 8.0, 7, 7.4
-			// Append -bullseye or -buster to pin to an OS version.
-			// Use -bullseye variants on local on arm64/Apple Silicon.
-			"VARIANT": "7.4",
-			"NODE_VERSION": "14"
-		}
-	},
+	"name": "caearagon.org web site",
+	"dockerComposeFile": "docker-compose.yml",
+
+	"service": "dev",
+	"workspaceFolder": "/workspace",
 	
 	// Set *default* container specific settings.json values on container create.
 	"settings": { 

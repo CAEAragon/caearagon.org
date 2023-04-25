@@ -91,6 +91,7 @@ function create_post_type() {
 			'has_archive' => true,
 		)
 	);
+
 	register_post_type(
 		'speaker',
 		array(
@@ -115,5 +116,31 @@ function create_post_type() {
 			'has_archive' => true,
 		)
 	);
+
+	register_post_type(
+		'roundtable',
+		array(
+			'labels' => array(
+				'name' => _( 'Roundtable Speakers' ),
+				'singular_name' => _( 'Roundtable speaker' ),
+			),
+			'supports' => array(
+				'title',
+				'editor',
+				'comments',
+				'revisions',
+				'trackbacks',
+				'author',
+				'excerpt',
+				'page-attributes',
+				'thumbnail',
+				'custom-fields',
+				'post-formats',
+			),
+			'public' => true,
+			'has_archive' => true,
+		)
+	);
+
 }
 add_action( 'init', 'create_post_type' );

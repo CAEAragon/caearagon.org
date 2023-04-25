@@ -12,6 +12,8 @@ $ARTICLES_POST_ID = 104;
 $SPEAKERS_POST_ID = 66;
 $SPONSORS_POST_ID = 64;
 
+$ROUNDTABLE_POST_ID = 66; // TODO
+
 $articles_post = get_post($ARTICLES_POST_ID);
 $articles = get_posts(
     array(
@@ -32,6 +34,18 @@ $speakers_posts = get_posts(
     )
 );
 
+$roundtable_post = get_post($ROUNDTABLE_POST_ID);
+$roundtable_posts = get_posts(
+    array(
+            'post_type' => 'roundtable',
+            'post_status' => 'publish',
+            'numberposts' => -1,
+            'orderby' => 'menu_order'
+    )
+);
+
+
+
 $sponsors_types = array (
         'especial' => 'Especial',
         'platino' => 'Platino',
@@ -40,6 +54,7 @@ $sponsors_types = array (
 );
 $sponsors_post = get_post($SPONSORS_POST_ID);
 $sponsors_posts = array();
+
 
 foreach ($sponsors_types as $sponsor_type => $sponsor_type_name) {
         $sponsors_posts[$sponsor_type] = get_posts(
@@ -91,6 +106,7 @@ function show_text(post){ document.getElementById(post).classList.add('showText'
                 <?php
                 foreach ($speakers_posts as $post) {
                         $title = get_post_meta($post->ID, 'title', true);
+                        $type = get_post_meta($post->ID, 'type', true);
                         $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full'); ?>
                         <div class=speaker id="post_<?php echo $post->ID; ?>" 
                                 onmouseover="show_text('post_<?php echo $post->ID; ?>')"
@@ -117,6 +133,44 @@ function show_text(post){ document.getElementById(post).classList.add('showText'
                 }
                 ?>
                 </ul>
+
+
+                <h1 class="speakers_title"><?php echo $roundtable_post->post_title; ?> </h1>
+                <p class="speakers_text"><?php echo $roundatble_post->post_content; ?> </p>
+
+
+                <ul class=speakers>
+                <?php
+                foreach ($roundtable_posts as $post) {
+                        $title = get_post_meta($post->ID, 'title', true);
+                        $type = get_post_meta($post->ID, 'type', true);
+                        $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full'); ?>
+                        <div class=speaker id="post_<?php echo $post->ID; ?>" 
+                                onmouseover="show_text('post_<?php echo $post->ID; ?>')"
+                                onmouseout="hide_text('post_<?php echo $post->ID; ?>')"
+                                 style="background-image: url('<?php echo $image[0]; ?>')">
+                                <div class=speaker_extname>
+                                        <div class=speaker_extname_in>
+                                                <span class="speaker_name"><?php echo $post->post_title; ?></span>
+                                        </div>
+                                </div>
+
+                                <div class=speaker_text>
+                                        <div class=speaker_text_in>
+                                        <span class="speaker_name"><?php echo $post->post_title; ?></span>
+                                        <span class="speaker_title"><?php echo $title; ?></span>
+                                        <span class="speaker_excerpt"><?php echo $post->post_excerpt; ?></span>
+                                        <span class="speaker_link"> 
+                                                <a href="<?php echo get_permalink($post); ?>"> Ver perfil &gt; </a>
+                                        </span>
+                                </div>
+                                </div>
+                        </div>
+                        <?php
+                }
+                ?>
+                </ul>
+
         </div>
 
         <div class="sponsors_main">

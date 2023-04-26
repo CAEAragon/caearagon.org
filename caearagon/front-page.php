@@ -11,6 +11,7 @@ wp_rig()->print_styles('wp-rig-content');
 $ARTICLES_POST_ID = 104;
 $SPEAKERS_POST_ID = 66;
 $SPONSORS_POST_ID = 64;
+$SCHEDULE_POST_ID = 255;
 
 $ROUNDTABLE_POST_ID = 735;
 
@@ -70,6 +71,8 @@ foreach ($sponsors_types as $sponsor_type => $sponsor_type_name) {
             
 }
 
+$schedule_post = get_post($SCHEDULE_POST_ID);
+
 ?>
 <a name="conferencia"></a>
 <main id="primary" class="site-main">
@@ -97,7 +100,7 @@ function show_text(post){ document.getElementById(post).classList.add('showText'
 
 <div class="with_margin">
         <div class="speakers_main">
-                <a name="agenda"></a>
+                <a name="ponentes"></a>
 
                 <h1 class="speakers_title"><?php echo $speakers_post->post_title; ?> </h1>
                 <p class="speakers_text"><?php echo $speakers_post->post_content; ?> </p>
@@ -172,9 +175,23 @@ function show_text(post){ document.getElementById(post).classList.add('showText'
                 </ul>
 
         </div>
+        
+        <?php
+        if ($schedule_post->post_status == 'publish' || is_user_logged_in()) { ?>
+
+        <div class="schedule_main">
+                <a name="agenda"></a>
+
+                <h1 class="schedule_title"><?php echo $schedule_post->post_title; ?> </h1>
+                <div class="schedule_content"><?php echo $schedule_post->post_content; ?> </div>
+        </div>
+        
+        <?php
+        }
+        ?>
 
         <div class="sponsors_main">
-                <a name="patrocinio"></a>
+                <a name="patrocinios"></a>
 
                 <h1 class="sponsors_title"><?php echo $sponsors_post->post_title; ?> </h1>
                 <p class="sponsors_text"><?php echo $sponsors_post->post_content; ?> </p>

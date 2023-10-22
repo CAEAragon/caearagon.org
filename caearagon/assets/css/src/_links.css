@@ -27,3 +27,12 @@ a:hover,
 a:active {
 	outline: 0;
 }
+
+.red-left a {
+	text-decoration: none;
+	color: #000d23;
+}
+
+.red-left a:hover {
+	text-decoration: underline !important;
+}

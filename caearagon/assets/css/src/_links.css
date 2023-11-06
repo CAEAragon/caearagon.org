@@ -36,3 +36,7 @@ a:active {
 .red-left a:hover {
 	text-decoration: underline !important;
 }
+
+.red-left p {
+	padding-right: 0px !important;
+}

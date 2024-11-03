@@ -10,6 +10,7 @@
     "phpunit/phpunit": "^6",
     "brain/monkey": "^2",
     "phpcompatibility/php-compatibility": "^9",
+    "squizlabs/php_codesniffer": "3.*",
     "yoast/phpunit-polyfills": "^1.0"
   },
   "config": {

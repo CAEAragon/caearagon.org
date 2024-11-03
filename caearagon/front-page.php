@@ -137,11 +137,11 @@ function show_text(post){ document.getElementById(post).classList.add('showText'
                 ?>
                 </ul>
 
-
+                <?php
+                if ($roundtable_post->post_status == 'publish' || is_user_logged_in()) { ?>
+               
                 <h1 class="speakers_title"><?php echo $roundtable_post->post_title; ?> </h1>
                 <p class="speakers_text"><?php echo $roundatble_post->post_content; ?> </p>
-
-
                 <ul class=speakers>
                 <?php
                 foreach ($roundtable_posts as $post) {
@@ -173,6 +173,9 @@ function show_text(post){ document.getElementById(post).classList.add('showText'
                 }
                 ?>
                 </ul>
+                <?php
+                }
+                ?>
 
         </div>
         
@@ -219,34 +222,6 @@ function show_text(post){ document.getElementById(post).classList.add('showText'
                         }
                 }
                 ?>
-        </div>
-
-        <div class="articles_main">
-                <a name="noticias"></a>
-                <h1 class="articles_title"><?php echo $articles_post->post_title; ?> </h1>
-
-                <ul class=articles>
-                <?php
-
-                foreach ($articles as $post) { ?>
-                        <div class="article">
-                        <?php
-                        if (has_post_thumbnail($post->ID)) {
-                                $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full'); ?>
-                                <div class=article_image 
-                                     style="background-image: url('<?php echo $image[0]; ?>')"></div>
-                                <?php
-                        }
-                        echo "<h4 class=article_title>$post->post_title</h4>";
-                        echo "<span class=article_date>$post->post_modified</span>";
-                        echo "<p class=article_excerpt>$post->post_excerpt</p>";
-                        echo "<p class=article_readmore><a href='" . get_permalink($post) . "'>Leer +</a></p>";
-                        ?>
-                        </article>
-                        <?php
-                }
-                ?>
-                </ul>
         </div>
 
         <script>

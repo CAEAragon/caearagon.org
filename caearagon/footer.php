@@ -18,8 +18,6 @@ namespace WP_Rig\WP_Rig;
     <div class=footer-content>
 
         <div class="footer-data">
-            <p> 6 de junio de 2024</p>
-            <p> <a href="https://www.fundacionibercaja.es/nuestros-espacios/campus-ibercaja" target="_blank">Monasterio Cogullada. Campus Ibercaja</a><br/> Carretera de Cogullada, 127, Zaragoza</p>
             <p> <a href="mailto:congreso.aragon.agilidad@gmail.com">congreso.aragon.agilidad@gmail.com</a></p>
         </div>
 

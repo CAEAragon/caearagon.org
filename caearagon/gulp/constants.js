@@ -29,7 +29,7 @@ export const isProd = ( process.env.NODE_ENV === 'production' );
 const config = getThemeConfig();
 
 // directory for the production theme
-export const prodThemePath = path.normalize( `${ rootPath }/../${ config.theme.slug }` );
+export const prodThemePath = path.normalize( `${ rootPath }/../dist/${ config.theme.slug }` );
 
 // directory for assets (CSS, JS, images)
 export const assetsDir = `${ rootPath }/assets`;
